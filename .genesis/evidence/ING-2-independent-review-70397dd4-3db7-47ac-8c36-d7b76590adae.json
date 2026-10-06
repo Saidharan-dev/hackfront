@@ -1,0 +1,13 @@
+{
+  "task": "ING-2",
+  "gate": "independent-review",
+  "kind": "review",
+  "attempt": "70397dd4-3db7-47ac-8c36-d7b76590adae",
+  "human": "user",
+  "reason": "User approved the GitHub ingestion adapter after reviewing its implementation; implementation files are unchanged, and the out-of-scope README edit has been reverted.",
+  "observed_at": "2026-10-06T15:59:27.500Z",
+  "source_hash": "6f93baf0e8d8a033e6700ba8e496beaeda0758f096b667a8634cbe904bb79b7a",
+  "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+  "reviewed_proofs": "05d79c21c2a15d4bd7aeea6f1b30af5b7a60831346472e60daf6a37ec0aee21a",
+  "hash": "76e57eaed4481d602c4635b1a8a0ebd03fb7bbd4b09ec80af5e110ddc3cdb555"
+}

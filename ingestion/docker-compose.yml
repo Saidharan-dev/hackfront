@@ -1,0 +1,29 @@
+services:
+  neo4j:
+    image: neo4j:2026.08-community
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_TEST_PASSWORD:-test-password}
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p '${NEO4J_TEST_PASSWORD:-test-password}' 'RETURN 1' >/dev/null"]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+
+  integration-tests:
+    image: python:3.13-slim
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    environment:
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: ${NEO4J_TEST_PASSWORD:-test-password}
+      NEO4J_DATABASE: neo4j
+      PYTHONDONTWRITEBYTECODE: "1"
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    command:
+      - sh
+      - -c
+      - pip install --disable-pip-version-check --no-cache-dir -r tests/integration/requirements.txt && python -m unittest discover -s tests/integration -v

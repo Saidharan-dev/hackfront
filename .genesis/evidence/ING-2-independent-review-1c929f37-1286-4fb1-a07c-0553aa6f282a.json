@@ -1,0 +1,13 @@
+{
+  "task": "ING-2",
+  "gate": "independent-review",
+  "kind": "review",
+  "attempt": "1c929f37-1286-4fb1-a07c-0553aa6f282a",
+  "human": "user",
+  "reason": "User reviewed the GitHub ingestion implementation and approved it in chat on 2026-10-06.",
+  "observed_at": "2026-10-06T15:58:47.446Z",
+  "source_hash": "49d7eae772efaff94bd31c735e58530042beff3446133d7aa78e6161bf42b398",
+  "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+  "reviewed_proofs": "481563b91868548cb727f588a63aadb4abde531eaefdc0b425f8f5665250f291",
+  "hash": "dbba311e69f84c32f40c4e405669ad52f859146a5ac77129734f46ce84ee5a29"
+}

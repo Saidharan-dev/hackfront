@@ -1,0 +1,30 @@
+{
+  "task": "ING-2",
+  "gate": "unit",
+  "kind": "command",
+  "attempt": "0a5893ef-c673-4ead-a42b-2956e411a954",
+  "command": "python -m unittest discover -s ingestion/tests/unit",
+  "started_at": "2026-10-06T15:47:08.232Z",
+  "observed_at": "2026-10-06T15:47:08.909Z",
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "",
+  "stderr": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 0.005s\r\n\r\nOK\r\n",
+  "failure": null,
+  "receipt": null,
+  "revision": {
+    "commit": null,
+    "dirty": null
+  },
+  "source_hash": "ef559dd7836019e0098b6015024a557e643ea9d7f613bcffee73e858fd462866",
+  "before_hash": "ef559dd7836019e0098b6015024a557e643ea9d7f613bcffee73e858fd462866",
+  "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "a2e9990ee3ab1e6d84901400e209fad84d2cbdb7648cd1292a5c69a9ee54ec9e"
+}

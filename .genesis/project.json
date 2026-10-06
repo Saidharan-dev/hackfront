@@ -1,0 +1,1337 @@
+{
+  "schema_version": 2,
+  "project": {
+    "name": "hackfront",
+    "mode": "adopt",
+    "profile": "prototype",
+    "objective": "Build an evidence-grounded engineering memory system that reconstructs why code is the way it is from temporal relationships across source artifacts.",
+    "constraints": [],
+    "non_goals": [],
+    "trust_boundary": "local repository",
+    "created_at": "2026-10-06T14:42:56.641Z",
+    "updated_at": "2026-10-06T17:14:49.184Z"
+  },
+  "policy": {
+    "ponytail": "full",
+    "autonomy": "human-in-the-loop",
+    "learned_rule_promotion": "human-required",
+    "cleanup": "propose-only",
+    "traces": {
+      "storage": "local",
+      "commit_raw": false,
+      "redact_secrets": true
+    }
+  },
+  "lifecycle": {
+    "phase": "planning",
+    "status": "rejected",
+    "active_task": null,
+    "blocker": null,
+    "next_action": "Finish defining requirement-linked tasks, then run genesis plan check."
+  },
+  "commands": {},
+  "workflow": {
+    "type": "new-product",
+    "started_at": "2026-10-06T15:09:13.620Z",
+    "spec_check": {
+      "at": "2026-10-06T15:35:19.236Z",
+      "source_hash": "50ca355bd7699c44ea44a51c759fa7c87b81e92d2fe88008a0f21dca0d4c0979",
+      "requirements": [
+        "AC-1",
+        "AC-2",
+        "AC-3",
+        "AC-4",
+        "AC-5",
+        "FR-1",
+        "FR-2",
+        "FR-3",
+        "FR-4",
+        "FR-5",
+        "FR-6",
+        "FR-7",
+        "FR-8",
+        "NFR-1",
+        "NFR-2",
+        "NFR-3",
+        "NFR-4",
+        "NFR-5"
+      ]
+    },
+    "plan_check": {
+      "at": "2026-10-06T17:14:39.963Z",
+      "source_hash": "e4ce868cf49f3da51d1a8b966715192f4142adc033c06d6af8c547bcdbc7d737"
+    },
+    "plan_approval": null
+  },
+  "artifacts": [
+    {
+      "id": "SPEC-1",
+      "type": "specification",
+      "path": "SPEC.md",
+      "status": "approved",
+      "requirements": [
+        "AC-1",
+        "AC-2",
+        "AC-3",
+        "AC-4",
+        "AC-5",
+        "FR-1",
+        "FR-2",
+        "FR-3",
+        "FR-4",
+        "FR-5",
+        "FR-6",
+        "FR-7",
+        "FR-8",
+        "NFR-1",
+        "NFR-2",
+        "NFR-3",
+        "NFR-4",
+        "NFR-5"
+      ],
+      "source_hash": "50ca355bd7699c44ea44a51c759fa7c87b81e92d2fe88008a0f21dca0d4c0979",
+      "approval": {
+        "human": "user",
+        "reason": "Approved the clarified specification, including both Git history and hosted pull-request metadata as required first-slice inputs.",
+        "at": "2026-10-06T15:35:19.415Z",
+        "source_hash": "50ca355bd7699c44ea44a51c759fa7c87b81e92d2fe88008a0f21dca0d4c0979"
+      }
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "ASSUMPTION-c10bcce9",
+      "text": "ING-2 uses the GitHub REST API for commit history and hosted pull-request records (including reviews and comments); a local-clone adapter can be added if later operational requirements need it.",
+      "status": "open",
+      "source": "Implementation choice for ING-2, 2026-10-06",
+      "recorded_at": "2026-10-06T15:49:30.391Z",
+      "paths": [],
+      "tags": []
+    }
+  ],
+  "invariants": [],
+  "decisions": [
+    {
+      "id": "DECISION-5cfb4d5e",
+      "title": "First-slice Git and pull-request coverage",
+      "text": "The first ingestion slice must ingest both Git history and hosted pull-request metadata. GitHub is the provisional hosted provider based on repository context; the route for obtaining commit history (local clone or provider API) remains an implementation detail to confirm.",
+      "status": "accepted",
+      "source": "User confirmation in chat, 2026-10-06",
+      "recorded_at": "2026-10-06T15:34:59.331Z",
+      "paths": [],
+      "tags": []
+    }
+  ],
+  "knowledge": [],
+  "tasks": [
+    {
+      "id": "SPEC-1",
+      "outcome": "Produce an approved, implementation-ready product specification",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "SPEC.md"
+      ],
+      "dependencies": [],
+      "requirements": [],
+      "gates": [
+        {
+          "id": "independent-review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "human": "user",
+            "reason": "Approved the clarified specification, including both Git history and hosted pull-request metadata as required first-slice inputs.",
+            "source_hash": "b2ce811a8ba8b0a5df8c74d2224d85e9663da29321e6627c2ab7522c070103bb",
+            "observed_at": "2026-10-06T15:35:19.415Z"
+          },
+          "kind": "review"
+        }
+      ],
+      "next_action": "Interview the human, record durable context, and replace every placeholder in SPEC.md.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:09:13.620Z",
+      "updated_at": "2026-10-06T15:35:19.415Z"
+    },
+    {
+      "id": "ING-1",
+      "outcome": "Define canonical ingestion contracts and provider-shaped mock datasets for Git history, pull requests, Jira, and Slack.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/contracts",
+        "ingestion/tests/fixtures/sources",
+        "ingestion/tests/unit"
+      ],
+      "dependencies": [],
+      "requirements": [
+        "FR-2",
+        "FR-5",
+        "NFR-1",
+        "NFR-2",
+        "NFR-4",
+        "AC-2"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "unit",
+          "kind": "command",
+          "command": "python -m unittest discover -s ingestion/tests/unit",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-1-unit-20c90ebf-74f2-4bd1-99ff-b2b0af4148cb.json",
+            "hash": "f6ba69e1c4d8bd895cd316f6665f9f26ae6dda50e4ec3a8aee4ddbce3a19651d",
+            "source_hash": "d03d160205ee4b5242b4907179a173f377d5e856e9ea86013c89742fe87eb176",
+            "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+            "observed_at": "2026-10-06T15:41:28.178Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-1-independent-review-953df908-5acb-4052-b0de-e7f1451e75eb.json",
+            "hash": "287326bc6d7f4e73a2f2d195aa8428e30ec8de2fdd65a0ca681e8f704cc224f9",
+            "source_hash": "d03d160205ee4b5242b4907179a173f377d5e856e9ea86013c89742fe87eb176",
+            "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+            "observed_at": "2026-10-06T15:44:42.060Z"
+          }
+        }
+      ],
+      "next_action": "Request independent human review of the contract and fixture changes; complete after approval.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:33.589Z",
+      "updated_at": "2026-10-06T15:44:42.938Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947"
+      }
+    },
+    {
+      "id": "ING-2",
+      "outcome": "Ingest Git history and hosted GitHub pull-request metadata through replaceable adapters with bounded backfill and cursors.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/sources/github",
+        "ingestion/tests/fixtures/sources/github",
+        "ingestion/tests/unit"
+      ],
+      "dependencies": [
+        "ING-1"
+      ],
+      "requirements": [
+        "FR-1",
+        "FR-6",
+        "AC-2",
+        "NFR-2"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "unit",
+          "kind": "command",
+          "command": "python -m unittest discover -s ingestion/tests/unit",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-2-unit-bce7c576-2a2e-4e5a-85dc-56107504d025.json",
+            "hash": "08af6988da20749fb71f2c048e6b67add5cb12badc825af5dea2817e6e2ffc12",
+            "source_hash": "6f93baf0e8d8a033e6700ba8e496beaeda0758f096b667a8634cbe904bb79b7a",
+            "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+            "observed_at": "2026-10-06T15:59:26.671Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-2-independent-review-70397dd4-3db7-47ac-8c36-d7b76590adae.json",
+            "hash": "76e57eaed4481d602c4635b1a8a0ebd03fb7bbd4b09ec80af5e110ddc3cdb555",
+            "source_hash": "6f93baf0e8d8a033e6700ba8e496beaeda0758f096b667a8634cbe904bb79b7a",
+            "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+            "observed_at": "2026-10-06T15:59:27.500Z"
+          }
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:33.799Z",
+      "updated_at": "2026-10-06T15:59:28.540Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f"
+      }
+    },
+    {
+      "id": "ING-3",
+      "outcome": "Ingest Jira issue and Slack discussion/thread records through replaceable adapters and source-faithful fixtures.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/sources/jira",
+        "ingestion/src/engineering_memory_ingestion/sources/slack",
+        "ingestion/tests/fixtures/sources/jira",
+        "ingestion/tests/fixtures/sources/slack",
+        "ingestion/tests/unit"
+      ],
+      "dependencies": [
+        "ING-1"
+      ],
+      "requirements": [
+        "FR-1",
+        "FR-5",
+        "FR-6",
+        "AC-2"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "unit",
+          "kind": "command",
+          "command": "python -m unittest discover -s ingestion/tests/unit",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-3-unit-072240fc-7d99-4653-9ef9-b65b8e2514e4.json",
+            "hash": "1cd2900d28b6d448d632c207a653ccfc84eb0a9b54a8547201008303ef551996",
+            "source_hash": "2f95c99b46b43873a872658fc66cb67b5ef31af1a06dff2d50612f277ca07c28",
+            "config_hash": "8b54841168967054bbbd278f10cc6c26852b9c18a53a05095449fc9f2865930d",
+            "observed_at": "2026-10-06T16:09:13.382Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-3-independent-review-c2797d0d-7668-4ba8-9351-8120cc17abc3.json",
+            "hash": "db156dab6ec9979989ce6b28e78dee85b2f7a6c9aef40c452eecf16b1edb3fd3",
+            "source_hash": "2f95c99b46b43873a872658fc66cb67b5ef31af1a06dff2d50612f277ca07c28",
+            "config_hash": "8b54841168967054bbbd278f10cc6c26852b9c18a53a05095449fc9f2865930d",
+            "observed_at": "2026-10-06T16:09:48.363Z"
+          }
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:34.005Z",
+      "updated_at": "2026-10-06T16:09:49.549Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py": "a823353ee998b6992e96fce13b6752ae3b8d723bdf78e69b6c2d0341a67b5596",
+        "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py": "e0cc04529dc6e95d030437b67297ccc170d58695ad1d7c6c41f34e74531284d3",
+        "ingestion/src/engineering_memory_ingestion/sources/github/client.py": "84e80812b5e2f7d93f7212eeca7d94da26ed64cca952d371762812b406b84cfa",
+        "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py": "23f788b4262d284c9727c68543f20d0255ab9f51259aeb9599c35da9658f8fe1",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/github/pull_request_issue_comments.json": "6caad5c35f192d6c75d8a81c1894f3c0bdf2b6d5dfe8e1ca4568b342571a5f3e",
+        "ingestion/tests/fixtures/sources/github/pull_request_review_comments.json": "d23c71583014382365f5181313204cabe2c6c8a8f68fd1b72cd84220667b13a7",
+        "ingestion/tests/fixtures/sources/github/pull_request_reviews.json": "7b8fc17924c9e5144cff5dbafde337038f03f090886d62c4941f20641074b23d",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_github_adapter.py": "ddddeff19a97ec06b7fb84bc2c1c1f62841626c5e3376f7a68be27fb7ea368de",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f"
+      }
+    },
+    {
+      "id": "ING-4",
+      "outcome": "Extract deterministic IDs, timestamps, paths, diffs, explicit references, and provenance; leave semantic extraction disabled.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/extraction",
+        "ingestion/tests/unit"
+      ],
+      "dependencies": [
+        "ING-1"
+      ],
+      "requirements": [
+        "FR-2",
+        "FR-3",
+        "FR-7",
+        "AC-5"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "unit",
+          "kind": "command",
+          "command": "python -m unittest discover -s ingestion/tests/unit",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-4-unit-11a3ce20-ee1d-481d-867b-450599ff3704.json",
+            "hash": "f94bb0a63c6e04719bab7a11520c29d01d98f339fb45d887803cbea41914c3ff",
+            "source_hash": "e1e0d3f2c5378c5e978e2d85ddf653a6b21b3e2262696212f3c4e748b8f42a1a",
+            "config_hash": "49032b6306023e1ec03e8df3c55231b8965fb809b51d2676ed8009c66b64c90b",
+            "observed_at": "2026-10-06T16:15:57.332Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-4-independent-review-740943c6-9814-47e3-a4d2-67ce2baeeda0.json",
+            "hash": "409c653602881ab99946147b8458b29c348fac9de1f80bb4d3796b416dca5d35",
+            "source_hash": "e1e0d3f2c5378c5e978e2d85ddf653a6b21b3e2262696212f3c4e748b8f42a1a",
+            "config_hash": "49032b6306023e1ec03e8df3c55231b8965fb809b51d2676ed8009c66b64c90b",
+            "observed_at": "2026-10-06T16:16:40.652Z"
+          }
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:34.228Z",
+      "updated_at": "2026-10-06T16:16:41.968Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py": "a823353ee998b6992e96fce13b6752ae3b8d723bdf78e69b6c2d0341a67b5596",
+        "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py": "e0cc04529dc6e95d030437b67297ccc170d58695ad1d7c6c41f34e74531284d3",
+        "ingestion/src/engineering_memory_ingestion/sources/github/client.py": "84e80812b5e2f7d93f7212eeca7d94da26ed64cca952d371762812b406b84cfa",
+        "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py": "23f788b4262d284c9727c68543f20d0255ab9f51259aeb9599c35da9658f8fe1",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py": "2ead7e079876217d74a104aad9e59e297b619fb1ce8a363319341b6c7b407175",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py": "8cd932da045692b2efee45025ba685198d255f495727eba99c3deafa928ccfe9",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/client.py": "1f6ac0d0c0c30c48c61447fbe06d76de3e43e508490e8a26a3a8b050cab6f274",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py": "da9fb042ad366c83ccd1014057f1094726515097d8a1f43463aa474daf246e32",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py": "6bea879154e25e37b95fe5e81054fcfa5655359ab73f00f50634444453c1ac96",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py": "a2158fcab10b00961dbe0df6228b4d9850491c03ad72b749f20c4b22ec07c581",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/client.py": "d364da4f04e4fec6f93595add248dc3ea62c62db11aca953b8fb1d70f0802d25",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py": "c4afaf3baed5e676c16a253749dfae05199aba480852646e3d972e1163b90bb5",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/github/pull_request_issue_comments.json": "6caad5c35f192d6c75d8a81c1894f3c0bdf2b6d5dfe8e1ca4568b342571a5f3e",
+        "ingestion/tests/fixtures/sources/github/pull_request_review_comments.json": "d23c71583014382365f5181313204cabe2c6c8a8f68fd1b72cd84220667b13a7",
+        "ingestion/tests/fixtures/sources/github/pull_request_reviews.json": "7b8fc17924c9e5144cff5dbafde337038f03f090886d62c4941f20641074b23d",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/jira/issue_comments.json": "3e85c805b413f78c18616d4dd8936d728b26099b9de15b3520f458c1ab2b7626",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_github_adapter.py": "ddddeff19a97ec06b7fb84bc2c1c1f62841626c5e3376f7a68be27fb7ea368de",
+        "ingestion/tests/unit/test_jira_adapter.py": "db1a1c27174bb8fbd40ecca88c401223563113ea1b2b8c5cfebdad3fb6b462ed",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f",
+        "ingestion/tests/unit/test_slack_adapter.py": "589af1a5e0619c18466f6b8d1858ce29447c4e0599aedb39b4b1e65bf88cf53a"
+      }
+    },
+    {
+      "id": "ING-5",
+      "outcome": "Persist canonical artifacts and explicit relationships to Neo4j with stable keys and idempotent writes.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j",
+        "ingestion/tests/integration",
+        "ingestion/docker-compose.yml"
+      ],
+      "dependencies": [
+        "ING-1"
+      ],
+      "requirements": [
+        "FR-4",
+        "NFR-3",
+        "NFR-5",
+        "AC-1",
+        "AC-3"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "neo4j",
+          "kind": "command",
+          "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-5-neo4j-537a58d7-4fdd-4753-a47b-f58f6d093e12.json",
+            "hash": "0929c8eb5ea58d5215a2d89acbfd3a65095f156d8c5e99c9490a1b3e1efc0afb",
+            "source_hash": "ede9f6590fd5cffbb354a1f99508a70e094f1e9fb9ba0346131e51115ab04714",
+            "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+            "observed_at": "2026-10-06T17:00:25.174Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-5-independent-review-be230687-08a2-4f5d-af8a-a773aa5af9d5.json",
+            "hash": "a31b8d7f7983bdf739e603eba9208d2ed999424415b2c4606b2db95c853ac893",
+            "source_hash": "ede9f6590fd5cffbb354a1f99508a70e094f1e9fb9ba0346131e51115ab04714",
+            "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+            "observed_at": "2026-10-06T17:01:49.144Z"
+          }
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:34.443Z",
+      "updated_at": "2026-10-06T17:01:57.866Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/src/engineering_memory_ingestion/extraction/__init__.py": "bc3b9bfde2bc1d1ba709077690ce649720a51e321765d41d34fbee343dcc6e3d",
+        "ingestion/src/engineering_memory_ingestion/extraction/deterministic.py": "37e5f22512e966330a4a2a3134c0d9f60cb4f4d37b6a1f46df7aad8adf1ff255",
+        "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py": "a823353ee998b6992e96fce13b6752ae3b8d723bdf78e69b6c2d0341a67b5596",
+        "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py": "e0cc04529dc6e95d030437b67297ccc170d58695ad1d7c6c41f34e74531284d3",
+        "ingestion/src/engineering_memory_ingestion/sources/github/client.py": "84e80812b5e2f7d93f7212eeca7d94da26ed64cca952d371762812b406b84cfa",
+        "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py": "23f788b4262d284c9727c68543f20d0255ab9f51259aeb9599c35da9658f8fe1",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py": "2ead7e079876217d74a104aad9e59e297b619fb1ce8a363319341b6c7b407175",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py": "8cd932da045692b2efee45025ba685198d255f495727eba99c3deafa928ccfe9",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/client.py": "1f6ac0d0c0c30c48c61447fbe06d76de3e43e508490e8a26a3a8b050cab6f274",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py": "da9fb042ad366c83ccd1014057f1094726515097d8a1f43463aa474daf246e32",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py": "6bea879154e25e37b95fe5e81054fcfa5655359ab73f00f50634444453c1ac96",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py": "a2158fcab10b00961dbe0df6228b4d9850491c03ad72b749f20c4b22ec07c581",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/client.py": "d364da4f04e4fec6f93595add248dc3ea62c62db11aca953b8fb1d70f0802d25",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py": "c4afaf3baed5e676c16a253749dfae05199aba480852646e3d972e1163b90bb5",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/github/pull_request_issue_comments.json": "6caad5c35f192d6c75d8a81c1894f3c0bdf2b6d5dfe8e1ca4568b342571a5f3e",
+        "ingestion/tests/fixtures/sources/github/pull_request_review_comments.json": "d23c71583014382365f5181313204cabe2c6c8a8f68fd1b72cd84220667b13a7",
+        "ingestion/tests/fixtures/sources/github/pull_request_reviews.json": "7b8fc17924c9e5144cff5dbafde337038f03f090886d62c4941f20641074b23d",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/jira/issue_comments.json": "3e85c805b413f78c18616d4dd8936d728b26099b9de15b3520f458c1ab2b7626",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_deterministic_extraction.py": "3e32a161abc2bd7b53efa8f9883a7e2ad50cdd953c7eb169a247b986e5551c7a",
+        "ingestion/tests/unit/test_github_adapter.py": "ddddeff19a97ec06b7fb84bc2c1c1f62841626c5e3376f7a68be27fb7ea368de",
+        "ingestion/tests/unit/test_jira_adapter.py": "db1a1c27174bb8fbd40ecca88c401223563113ea1b2b8c5cfebdad3fb6b462ed",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f",
+        "ingestion/tests/unit/test_slack_adapter.py": "589af1a5e0619c18466f6b8d1858ce29447c4e0599aedb39b4b1e65bf88cf53a"
+      }
+    },
+    {
+      "id": "ING-6",
+      "outcome": "Orchestrate bounded ingestion runs with cursor replay, redacted run summaries, and end-to-end acceptance coverage.",
+      "state": "done",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/src/engineering_memory_ingestion/core",
+        "ingestion/src/engineering_memory_ingestion/observability",
+        "ingestion/tests"
+      ],
+      "dependencies": [
+        "ING-2",
+        "ING-3",
+        "ING-4",
+        "ING-5"
+      ],
+      "requirements": [
+        "FR-6",
+        "FR-8",
+        "NFR-4",
+        "AC-1",
+        "AC-4"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "unit",
+          "kind": "command",
+          "command": "python -m unittest discover -s ingestion/tests",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-6-unit-28149ab0-2328-43aa-af02-25a23a1babba.json",
+            "hash": "b77ee7501911e68a2a8c173d4168095cb4b89b50ef4da53e96a538dd6f329037",
+            "source_hash": "b50803d4fb58deced4187824ea2fb5b4233eaeccecd2f0f7b4a9d9847fe8fdb8",
+            "config_hash": "b282e283ae2d52a308cb0c0c695247e203f26ed1b7dd14c082a874279828e9ac",
+            "observed_at": "2026-10-06T17:07:26.807Z"
+          }
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-6-independent-review-772e1bcc-ff13-4299-832a-3feb532130b3.json",
+            "hash": "0c4bc3aa528c59c591cb9db938f90885397ad3aa4bdc4e6a35bb36d6bc01c617",
+            "source_hash": "b50803d4fb58deced4187824ea2fb5b4233eaeccecd2f0f7b4a9d9847fe8fdb8",
+            "config_hash": "b282e283ae2d52a308cb0c0c695247e203f26ed1b7dd14c082a874279828e9ac",
+            "observed_at": "2026-10-06T17:09:04.481Z"
+          }
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T15:35:34.663Z",
+      "updated_at": "2026-10-06T17:09:06.134Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/docker-compose.yml": "c36952ae518cc2c638d30bd1f31b6be6a6056d5e93574c9806ee0839a52c74e8",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/src/engineering_memory_ingestion/extraction/__init__.py": "bc3b9bfde2bc1d1ba709077690ce649720a51e321765d41d34fbee343dcc6e3d",
+        "ingestion/src/engineering_memory_ingestion/extraction/deterministic.py": "37e5f22512e966330a4a2a3134c0d9f60cb4f4d37b6a1f46df7aad8adf1ff255",
+        "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py": "a823353ee998b6992e96fce13b6752ae3b8d723bdf78e69b6c2d0341a67b5596",
+        "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py": "e0cc04529dc6e95d030437b67297ccc170d58695ad1d7c6c41f34e74531284d3",
+        "ingestion/src/engineering_memory_ingestion/sources/github/client.py": "84e80812b5e2f7d93f7212eeca7d94da26ed64cca952d371762812b406b84cfa",
+        "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py": "23f788b4262d284c9727c68543f20d0255ab9f51259aeb9599c35da9658f8fe1",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py": "2ead7e079876217d74a104aad9e59e297b619fb1ce8a363319341b6c7b407175",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py": "8cd932da045692b2efee45025ba685198d255f495727eba99c3deafa928ccfe9",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/client.py": "1f6ac0d0c0c30c48c61447fbe06d76de3e43e508490e8a26a3a8b050cab6f274",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py": "da9fb042ad366c83ccd1014057f1094726515097d8a1f43463aa474daf246e32",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py": "6bea879154e25e37b95fe5e81054fcfa5655359ab73f00f50634444453c1ac96",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py": "a2158fcab10b00961dbe0df6228b4d9850491c03ad72b749f20c4b22ec07c581",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/client.py": "d364da4f04e4fec6f93595add248dc3ea62c62db11aca953b8fb1d70f0802d25",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py": "c4afaf3baed5e676c16a253749dfae05199aba480852646e3d972e1163b90bb5",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py": "8a46afaa0f67a9c0250d4e05ea0223dc5f3f978bc042141c4d4ffbbb205de296",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py": "52fa2faa0ed62b63dffb8bf00d079653fb2790ff6de66f22417bfdb067a05a3f",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py": "07b9b4bb500a577d764c31e5b675bbc4c03c684fe7cb52e4a2fa0757c80dbd81",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/github/pull_request_issue_comments.json": "6caad5c35f192d6c75d8a81c1894f3c0bdf2b6d5dfe8e1ca4568b342571a5f3e",
+        "ingestion/tests/fixtures/sources/github/pull_request_review_comments.json": "d23c71583014382365f5181313204cabe2c6c8a8f68fd1b72cd84220667b13a7",
+        "ingestion/tests/fixtures/sources/github/pull_request_reviews.json": "7b8fc17924c9e5144cff5dbafde337038f03f090886d62c4941f20641074b23d",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/jira/issue_comments.json": "3e85c805b413f78c18616d4dd8936d728b26099b9de15b3520f458c1ab2b7626",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/integration/requirements.txt": "222324da9d747b8643c5c77fb934b883d402f4f95d80178b003b8bea9028a36c",
+        "ingestion/tests/integration/test_neo4j_store.py": "f953a374b12c08d4a3846d168ea117f954a5ab49fbb3c803125226c3a757fade",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_deterministic_extraction.py": "3e32a161abc2bd7b53efa8f9883a7e2ad50cdd953c7eb169a247b986e5551c7a",
+        "ingestion/tests/unit/test_github_adapter.py": "ddddeff19a97ec06b7fb84bc2c1c1f62841626c5e3376f7a68be27fb7ea368de",
+        "ingestion/tests/unit/test_jira_adapter.py": "db1a1c27174bb8fbd40ecca88c401223563113ea1b2b8c5cfebdad3fb6b462ed",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f",
+        "ingestion/tests/unit/test_slack_adapter.py": "589af1a5e0619c18466f6b8d1858ce29447c4e0599aedb39b4b1e65bf88cf53a"
+      }
+    },
+    {
+      "id": "ING-7",
+      "outcome": "Prove the bounded source-fixture ingestion runner end to end against disposable Neo4j, including replay and redacted run output.",
+      "state": "rejected",
+      "risk": "medium",
+      "owner": null,
+      "scope": [],
+      "dependencies": [],
+      "requirements": [
+        "AC-1",
+        "AC-4",
+        "NFR-2"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "neo4j-e2e",
+          "kind": "command",
+          "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+          "mandatory": true,
+          "status": "pending",
+          "evidence": null
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pending",
+          "evidence": null
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T17:12:42.261Z",
+      "updated_at": "2026-10-06T17:12:42.262Z"
+    },
+    {
+      "id": "ING-8",
+      "outcome": "Add source-fixture to bounded-runner to Neo4j acceptance coverage for cursor replay and redacted run summaries.",
+      "state": "queued",
+      "risk": "medium",
+      "owner": null,
+      "scope": [
+        "ingestion/tests/integration"
+      ],
+      "dependencies": [
+        "ING-5",
+        "ING-6"
+      ],
+      "requirements": [
+        "AC-1",
+        "AC-4",
+        "NFR-2"
+      ],
+      "inputs": [],
+      "environment": [],
+      "scenarios": [],
+      "gates": [
+        {
+          "id": "neo4j-e2e",
+          "kind": "command",
+          "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+          "mandatory": true,
+          "status": "pending",
+          "evidence": null
+        },
+        {
+          "id": "independent-review",
+          "kind": "review",
+          "command": "",
+          "mandatory": true,
+          "status": "pending",
+          "evidence": null
+        }
+      ],
+      "next_action": "Run the task pre-flight.",
+      "blocker": null,
+      "notes": [],
+      "failures": [],
+      "limitations": [],
+      "created_at": "2026-10-06T17:14:38.990Z",
+      "updated_at": "2026-10-06T17:14:38.991Z"
+    }
+  ],
+  "learning_proposals": [],
+  "cleanup_proposals": [],
+  "controls": [
+    {
+      "id": "953df908-5acb-4052-b0de-e7f1451e75eb",
+      "at": "2026-10-06T15:44:42.060Z",
+      "action": "approve",
+      "task": "ING-1",
+      "human": "user",
+      "reason": "User reviewed and approved the canonical contracts and native-shaped fixtures.",
+      "revision": null
+    },
+    {
+      "id": "1c929f37-1286-4fb1-a07c-0553aa6f282a",
+      "at": "2026-10-06T15:58:47.446Z",
+      "action": "approve",
+      "task": "ING-2",
+      "human": "user",
+      "reason": "User reviewed the GitHub ingestion implementation and approved it in chat on 2026-10-06.",
+      "revision": null
+    },
+    {
+      "id": "70397dd4-3db7-47ac-8c36-d7b76590adae",
+      "at": "2026-10-06T15:59:27.500Z",
+      "action": "approve",
+      "task": "ING-2",
+      "human": "user",
+      "reason": "User approved the GitHub ingestion adapter after reviewing its implementation; implementation files are unchanged, and the out-of-scope README edit has been reverted.",
+      "revision": null
+    },
+    {
+      "id": "c2797d0d-7668-4ba8-9351-8120cc17abc3",
+      "at": "2026-10-06T16:09:48.363Z",
+      "action": "approve",
+      "task": "ING-3",
+      "human": "user",
+      "reason": "User reviewed the Jira and Slack ingestion implementation and approved it in chat on 2026-10-06.",
+      "revision": null
+    },
+    {
+      "id": "740943c6-9814-47e3-a4d2-67ce2baeeda0",
+      "at": "2026-10-06T16:16:40.652Z",
+      "action": "approve",
+      "task": "ING-4",
+      "human": "user",
+      "reason": "User reviewed the deterministic extraction implementation and approved it in chat on 2026-10-06.",
+      "revision": null
+    },
+    {
+      "id": "be230687-08a2-4f5d-af8a-a773aa5af9d5",
+      "at": "2026-10-06T17:01:49.144Z",
+      "action": "approve",
+      "task": "ING-5",
+      "human": "user",
+      "reason": "Approved by user in chat",
+      "revision": null
+    },
+    {
+      "id": "772e1bcc-ff13-4299-832a-3feb532130b3",
+      "at": "2026-10-06T17:09:04.481Z",
+      "action": "approve",
+      "task": "ING-6",
+      "human": "user",
+      "reason": "Approved by user in chat",
+      "revision": null
+    },
+    {
+      "id": "d9e31d44-62cc-4814-bd6a-b380b175a9da",
+      "at": "2026-10-06T17:14:37.986Z",
+      "action": "reject",
+      "task": "ING-7",
+      "human": null,
+      "reason": null,
+      "revision": null
+    }
+  ],
+  "attempts": [
+    {
+      "id": "9e5c4b90-bfae-4dcf-8f62-c140b5902c3e",
+      "task": "ING-1",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 17476,
+      "child_pid": 21864,
+      "started_at": "2026-10-06T15:39:03.820Z",
+      "status": "failed",
+      "before_hash": "b2ce811a8ba8b0a5df8c74d2224d85e9663da29321e6627c2ab7522c070103bb",
+      "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T15:39:04.285Z"
+    },
+    {
+      "id": "c63a6405-e484-4792-8005-2cbadbf89bbd",
+      "task": "ING-1",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 12124,
+      "child_pid": 19332,
+      "started_at": "2026-10-06T15:40:52.433Z",
+      "status": "failed",
+      "before_hash": "4f4535eb51972c6726649e0087b9458245b561706c981c7b40c5c11c349b8e76",
+      "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "source-mutated",
+      "ended_at": "2026-10-06T15:40:52.839Z"
+    },
+    {
+      "id": "de3a2e46-bc0d-477c-bda6-8e311abd60ca",
+      "task": "ING-1",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 19304,
+      "child_pid": 18888,
+      "started_at": "2026-10-06T15:41:11.634Z",
+      "status": "failed",
+      "before_hash": "b01b0e26326ea8dab1c78dcc9de007d9553c6eb9a6a7a4d977a12ec9b9e824f3",
+      "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T15:41:12.142Z"
+    },
+    {
+      "id": "20c90ebf-74f2-4bd1-99ff-b2b0af4148cb",
+      "task": "ING-1",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 20384,
+      "child_pid": 16956,
+      "started_at": "2026-10-06T15:41:27.738Z",
+      "status": "passed",
+      "before_hash": "d03d160205ee4b5242b4907179a173f377d5e856e9ea86013c89742fe87eb176",
+      "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T15:41:28.178Z"
+    },
+    {
+      "id": "0a5893ef-c673-4ead-a42b-2956e411a954",
+      "task": "ING-2",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 6032,
+      "child_pid": 13300,
+      "started_at": "2026-10-06T15:47:08.232Z",
+      "status": "passed",
+      "before_hash": "ef559dd7836019e0098b6015024a557e643ea9d7f613bcffee73e858fd462866",
+      "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T15:47:08.909Z"
+    },
+    {
+      "id": "c1a1e3c5-c258-452d-b79f-14df6d989a37",
+      "task": "ING-2",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 10128,
+      "child_pid": 15352,
+      "started_at": "2026-10-06T15:49:15.985Z",
+      "status": "passed",
+      "before_hash": "49d7eae772efaff94bd31c735e58530042beff3446133d7aa78e6161bf42b398",
+      "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T15:49:17.029Z"
+    },
+    {
+      "id": "bce7c576-2a2e-4e5a-85dc-56107504d025",
+      "task": "ING-2",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 21172,
+      "child_pid": 10924,
+      "started_at": "2026-10-06T15:59:25.312Z",
+      "status": "passed",
+      "before_hash": "6f93baf0e8d8a033e6700ba8e496beaeda0758f096b667a8634cbe904bb79b7a",
+      "config_hash": "e9049a2bd1cf63ca0ac87490fbc61e4c22c48b04dd03fcd1ae1b673aeda9605c",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T15:59:26.671Z"
+    },
+    {
+      "id": "183c5e10-a6ac-4bc3-9b74-57496b88c086",
+      "task": "ING-3",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 22672,
+      "child_pid": 23052,
+      "started_at": "2026-10-06T16:07:49.763Z",
+      "status": "passed",
+      "before_hash": "2cdbd297f55bf5def2c8fe6e485e3cf5fe1b553c9ea9e70adeaabd0d0ae78011",
+      "config_hash": "8b54841168967054bbbd278f10cc6c26852b9c18a53a05095449fc9f2865930d",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T16:07:50.714Z"
+    },
+    {
+      "id": "04a98601-5371-4c42-a9e9-06a26487db7f",
+      "task": "ING-3",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 14796,
+      "child_pid": 3760,
+      "started_at": "2026-10-06T16:08:44.461Z",
+      "status": "passed",
+      "before_hash": "3a2f88718a565bb796cf452f66c73c8efba9de2e746204b7078009c9b6d0c07e",
+      "config_hash": "8b54841168967054bbbd278f10cc6c26852b9c18a53a05095449fc9f2865930d",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T16:08:45.813Z"
+    },
+    {
+      "id": "072240fc-7d99-4653-9ef9-b65b8e2514e4",
+      "task": "ING-3",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 16696,
+      "child_pid": 12488,
+      "started_at": "2026-10-06T16:09:12.132Z",
+      "status": "passed",
+      "before_hash": "2f95c99b46b43873a872658fc66cb67b5ef31af1a06dff2d50612f277ca07c28",
+      "config_hash": "8b54841168967054bbbd278f10cc6c26852b9c18a53a05095449fc9f2865930d",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T16:09:13.382Z"
+    },
+    {
+      "id": "11a3ce20-ee1d-481d-867b-450599ff3704",
+      "task": "ING-4",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests/unit",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 24540,
+      "child_pid": 14152,
+      "started_at": "2026-10-06T16:15:56.200Z",
+      "status": "passed",
+      "before_hash": "e1e0d3f2c5378c5e978e2d85ddf653a6b21b3e2262696212f3c4e748b8f42a1a",
+      "config_hash": "49032b6306023e1ec03e8df3c55231b8965fb809b51d2676ed8009c66b64c90b",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T16:15:57.332Z"
+    },
+    {
+      "id": "e20f3796-3aa5-413f-b45d-196f19ff3308",
+      "task": "ING-5",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 18828,
+      "child_pid": 22900,
+      "started_at": "2026-10-06T16:23:57.922Z",
+      "status": "failed",
+      "before_hash": "4da4f92a7bacb0ea10cda72aeb50a49e1ff789ce7a1f87cba0fc214268c6828c",
+      "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T16:24:46.053Z"
+    },
+    {
+      "id": "65fdf103-ffb2-488c-9931-db2772b56b1b",
+      "task": "ING-5",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 10116,
+      "child_pid": 12464,
+      "started_at": "2026-10-06T16:28:16.568Z",
+      "status": "failed",
+      "before_hash": "4fd21945a012105c8be1a64d3c38ef0eba608a71be612ddca87e72ebff002d2f",
+      "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T16:29:04.681Z"
+    },
+    {
+      "id": "a2c25180-2f38-47ff-926d-c51a11c3ce28",
+      "task": "ING-5",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 19464,
+      "child_pid": 22356,
+      "started_at": "2026-10-06T16:56:36.351Z",
+      "status": "failed",
+      "before_hash": "4fd21945a012105c8be1a64d3c38ef0eba608a71be612ddca87e72ebff002d2f",
+      "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T16:57:32.785Z"
+    },
+    {
+      "id": "537a58d7-4fdd-4753-a47b-f58f6d093e12",
+      "task": "ING-5",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 6828,
+      "child_pid": 1680,
+      "started_at": "2026-10-06T17:00:07.463Z",
+      "status": "passed",
+      "before_hash": "ede9f6590fd5cffbb354a1f99508a70e094f1e9fb9ba0346131e51115ab04714",
+      "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T17:00:25.174Z"
+    },
+    {
+      "id": "09da2915-cc33-4525-8658-63080bb91678",
+      "task": "ING-6",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 21884,
+      "child_pid": 1676,
+      "started_at": "2026-10-06T17:07:01.052Z",
+      "status": "failed",
+      "before_hash": "3cd97a0a47134f8d4d2eed1ac876cbb1324a7d78e291f30bc87eeaddee22953a",
+      "config_hash": "b282e283ae2d52a308cb0c0c695247e203f26ed1b7dd14c082a874279828e9ac",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-06T17:07:03.047Z"
+    },
+    {
+      "id": "28149ab0-2328-43aa-af02-25a23a1babba",
+      "task": "ING-6",
+      "kind": "gate",
+      "command": "python -m unittest discover -s ingestion/tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 25592,
+      "child_pid": 23432,
+      "started_at": "2026-10-06T17:07:25.226Z",
+      "status": "passed",
+      "before_hash": "b50803d4fb58deced4187824ea2fb5b4233eaeccecd2f0f7b4a9d9847fe8fdb8",
+      "config_hash": "b282e283ae2d52a308cb0c0c695247e203f26ed1b7dd14c082a874279828e9ac",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-06T17:07:26.807Z"
+    }
+  ],
+  "authorizations": [],
+  "experiments": [],
+  "incidents": [],
+  "discovery": {
+    "files": 4,
+    "languages": [],
+    "extensions": {
+      ".html": 2,
+      ".md": 2
+    },
+    "commands": {},
+    "legacy_genesis": false,
+    "revision": {
+      "commit": null,
+      "dirty": null,
+      "source_hash": "9d92ce27ee70e17eecb03b11afbccc59afbfd7b6b9801e303ac846d424564347"
+    }
+  },
+  "checkpoint": {
+    "at": "2026-10-06T17:14:49.104Z",
+    "revision": {
+      "commit": null,
+      "dirty": null,
+      "source_hash": "b50803d4fb58deced4187824ea2fb5b4233eaeccecd2f0f7b4a9d9847fe8fdb8"
+    },
+    "active_task": null,
+    "next_action": "Finish defining requirement-linked tasks, then run genesis plan check."
+  },
+  "legacy": null
+}

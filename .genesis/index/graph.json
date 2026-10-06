@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 2,
+  "project": "hackfront",
+  "revision": null,
+  "sourceHash": "1b5454fa8135d98859ee535f090f78d81144d1f0a579e92844c20cd581a1354a",
+  "provenance": {
+    "tool": "genesis-graphizer",
+    "method": "static-analysis",
+    "confidenceScale": "0..1"
+  },
+  "nodes": [
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/contracts/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/contracts/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/contracts/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "d119dd2dd3475e12ee0b53316b39e15e522a6eb0e64b0398295afbfb6a1314f2"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/contracts/records.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/contracts/records.py",
+      "path": "ingestion/src/engineering_memory_ingestion/contracts/records.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "5e202305f5cbfbe7c702c92258083c4f052d774c0b82469dd79386626f63effc"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/contracts/versions.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/contracts/versions.py",
+      "path": "ingestion/src/engineering_memory_ingestion/contracts/versions.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "ee7e7a39d3f324ccea3fec7748f44a3e8f2d2ea59efc2cd745936b9000f7e1c7"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/core/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/core/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/core/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "898c411bdbd549a6e33ea259524a2dac617f5cbc346a1b61a9bdad8bfa332db0"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/core/runner.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/core/runner.py",
+      "path": "ingestion/src/engineering_memory_ingestion/core/runner.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "e2787e2863be67bbb9c6d80106bcbb228445b3fdd7dae50b1bccec9500e105b3"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/extraction/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/extraction/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/extraction/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "8067219b5f3d25776e82744c26630dfdae8bc2435eb66196a3ad612ab2c1a692"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/extraction/deterministic.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/extraction/deterministic.py",
+      "path": "ingestion/src/engineering_memory_ingestion/extraction/deterministic.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "fe138bfabb550f6f099b492b5eb94f6e835ae74cb538d7a40a0066dd41665192"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/observability/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/observability/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/observability/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "baafb502736ed2d22aa451c3157125d914c8058569d5858b0a087cc72a572c42"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/observability/run_summary.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/observability/run_summary.py",
+      "path": "ingestion/src/engineering_memory_ingestion/observability/run_summary.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "3cb956426b860edd66cd88b11c816cd3080d1e9230e72c9abeef13f6935ca145"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/github/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "2423fe6872d0a3f4047af4718bbb4682c228f029dc494400ac4df399ae1411bd"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/github/adapter.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "b9c88304722ec3f4cb35997206501a95ade437556ec6e2459804389824657463"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/github/client.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/github/client.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/github/client.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "67c41dd6933a0bee979917117e47fb4e202687b1dc82bef1944d819fbffbcca8"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/github/mapper.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "a4d40d3ea912d4565d19363fdddc1cd9b2e0c7bb0346b676d025527e7defe442"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "184177d44cbadbc943463d2eea7047ca0c4487325a7716893f5a615bde68a172"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "b0feb2e3f161ea986ba3f68547eb59718a0323752b0380d46544274616ddb277"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/jira/client.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/jira/client.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/jira/client.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "8dd673d49131d62a75688d7e6882c613c1b901ab5ffc2c05634c20a1c426f019"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "e5ec96df9f61778777a00c5e83094719bff161570e11b38e0f587f4a92bb254f"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "09c540a9a3229414ff7d9fa86ecdd10077089252fb46b06a7a4d333b9261e89c"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "2bf168aa57cfa181d0fb0ae518a86e6525de4b1eee143ccdd168dacceb0247f2"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/slack/client.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/slack/client.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/slack/client.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "ee4004f6540b1a50024a732b7f2412d781a4c11d933b8a7370fb3694de4a5b20"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py",
+      "path": "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "12e84044cfbd6e7af0e9124627b296aad0814511b3311992b91e12373823831c"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py",
+      "path": "ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "d073e39e4c37b3411cdd8728b89d83e4a1a86dccef637dc2e655b0f87f22a045"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py",
+      "path": "ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "0e219e1cfb926522ed20b0f74e80ee46bfbf8a239092a0d9c3b746be450d0265"
+    },
+    {
+      "id": "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py",
+      "type": "file",
+      "label": "ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py",
+      "path": "ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "3843b16a0b70e7eccad861cb744a0203be224550ba0743f274148450abbb3ffa"
+    },
+    {
+      "id": "file:ingestion/tests/__init__.py",
+      "type": "file",
+      "label": "ingestion/tests/__init__.py",
+      "path": "ingestion/tests/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "ca17d29329ce17806de8dfc8580fa8bb596166971052926dea04f8699a3cc843"
+    },
+    {
+      "id": "file:ingestion/tests/integration/test_neo4j_store.py",
+      "type": "file",
+      "label": "ingestion/tests/integration/test_neo4j_store.py",
+      "path": "ingestion/tests/integration/test_neo4j_store.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "ccdff4f8a7f54b9f1c8b744b8e506cb43a7165daf0026355fc356724d109c53c"
+    },
+    {
+      "id": "file:ingestion/tests/unit/__init__.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/__init__.py",
+      "path": "ingestion/tests/unit/__init__.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "51d44aa9738027e233a8a4b4b3a1ede3b94169600d36403c35391f5cea6224d7"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_contracts.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_contracts.py",
+      "path": "ingestion/tests/unit/test_contracts.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "d8064b801c9e944a3eb8c21b8932f9ccefed574eb6bedc0e563200e1d00a708e"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_deterministic_extraction.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_deterministic_extraction.py",
+      "path": "ingestion/tests/unit/test_deterministic_extraction.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "40e52b8fde48f741e55aeaea81d94452d45c2cb949afc11c86be97884362bc0d"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_github_adapter.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_github_adapter.py",
+      "path": "ingestion/tests/unit/test_github_adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "b44a353ac0c0895a727eb46eb8659081165d95b094f67b68288fa3634415b016"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_jira_adapter.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_jira_adapter.py",
+      "path": "ingestion/tests/unit/test_jira_adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "47e39218aed0d65a660269e9e91a7983b933e3ab820d33a86558d7bdcd3bbf18"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_native_fixtures.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_native_fixtures.py",
+      "path": "ingestion/tests/unit/test_native_fixtures.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "bc9c26e2c2aa560bbc6cf2097de32e872ec80c791c16e4e038a67514d790e283"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_pipeline.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_pipeline.py",
+      "path": "ingestion/tests/unit/test_pipeline.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "a948d787aa5a98dbf9c18fecd8d056f1ea7676188998c66a9421b349f1f158c9"
+    },
+    {
+      "id": "file:ingestion/tests/unit/test_slack_adapter.py",
+      "type": "file",
+      "label": "ingestion/tests/unit/test_slack_adapter.py",
+      "path": "ingestion/tests/unit/test_slack_adapter.py",
+      "language": "python",
+      "confidence": 1,
+      "extractor": "filesystem",
+      "contentHash": "e066f6a4092b7676232aa15d8940dd17f97a25840d847fce796697bbad715237"
+    }
+  ],
+  "edges": [],
+  "warnings": [
+    "Python AST unavailable: Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases."
+  ],
+  "stats": {
+    "unresolvedCalls": 0
+  }
+}

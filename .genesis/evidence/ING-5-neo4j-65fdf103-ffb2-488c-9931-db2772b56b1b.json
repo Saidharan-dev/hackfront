@@ -1,0 +1,30 @@
+{
+  "task": "ING-5",
+  "gate": "neo4j",
+  "kind": "command",
+  "attempt": "65fdf103-ffb2-488c-9931-db2772b56b1b",
+  "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+  "started_at": "2026-10-06T16:28:16.568Z",
+  "observed_at": "2026-10-06T16:29:04.681Z",
+  "exit_code": 1,
+  "signal": null,
+  "stdout": "",
+  "stderr": "unable to get image 'neo4j:2026.08-community': request returned 500 Internal Server Error for API route and version http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.55/images/neo4j:2026.08-community/json, check if the server supports the requested API version\n",
+  "failure": "command-failed",
+  "receipt": null,
+  "revision": {
+    "commit": null,
+    "dirty": null
+  },
+  "source_hash": "4fd21945a012105c8be1a64d3c38ef0eba608a71be612ddca87e72ebff002d2f",
+  "before_hash": "4fd21945a012105c8be1a64d3c38ef0eba608a71be612ddca87e72ebff002d2f",
+  "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "d5aacb56f68030d7732dd71537d762f81a21c0a4b223c220175dc8d92c428f0b"
+}

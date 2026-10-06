@@ -1,0 +1,30 @@
+{
+  "task": "ING-1",
+  "gate": "unit",
+  "kind": "command",
+  "attempt": "c63a6405-e484-4792-8005-2cbadbf89bbd",
+  "command": "python -m unittest discover -s ingestion/tests/unit",
+  "started_at": "2026-10-06T15:40:52.433Z",
+  "observed_at": "2026-10-06T15:40:52.839Z",
+  "exit_code": 1,
+  "signal": null,
+  "stdout": "",
+  "stderr": ".F.......\r\n======================================================================\r\nFAIL: test_canonical_identity_is_namespaced_and_escapes_delimiters (test_contracts.ContractTests.test_canonical_identity_is_namespaced_and_escapes_delimiters)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"C:\\Users\\sai\\Documents\\ChatGPT\\hackfront\\ingestion\\tests\\unit\\test_contracts.py\", line 32, in test_canonical_identity_is_namespaced_and_escapes_delimiters\r\n    self.assertEqual(\r\n    ~~~~~~~~~~~~~~~~^\r\n        self.source.canonical_id,\r\n        ^^^^^^^^^^^^^^^^^^^^^^^^^\r\n        \"github:acme/payments:commit:abc%3A123\",\r\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n    )\r\n    ^\r\nAssertionError: 'github:acme%2Fpayments:commit:abc%3A123' != 'github:acme/payments:commit:abc%3A123'\r\n- github:acme%2Fpayments:commit:abc%3A123\r\n?            ^^^\r\n+ github:acme/payments:commit:abc%3A123\r\n?            ^\r\n\r\n\r\n----------------------------------------------------------------------\r\nRan 9 tests in 0.002s\r\n\r\nFAILED (failures=1)\r\n",
+  "failure": "source-mutated",
+  "receipt": null,
+  "revision": {
+    "commit": null,
+    "dirty": null
+  },
+  "source_hash": "b01b0e26326ea8dab1c78dcc9de007d9553c6eb9a6a7a4d977a12ec9b9e824f3",
+  "before_hash": "4f4535eb51972c6726649e0087b9458245b561706c981c7b40c5c11c349b8e76",
+  "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "56498a31a2ceff9f589e09258c40e0273db78853e5d6b5f683810e080184e20a"
+}

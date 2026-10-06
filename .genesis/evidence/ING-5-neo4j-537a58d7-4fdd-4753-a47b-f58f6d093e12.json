@@ -1,0 +1,30 @@
+{
+  "task": "ING-5",
+  "gate": "neo4j",
+  "kind": "command",
+  "attempt": "537a58d7-4fdd-4753-a47b-f58f6d093e12",
+  "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+  "started_at": "2026-10-06T17:00:07.463Z",
+  "observed_at": "2026-10-06T17:00:25.174Z",
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "Collecting neo4j==6.4.0 (from -r tests/integration/requirements.txt (line 1))\n  Downloading neo4j-6.4.0-py3-none-any.whl.metadata (5.5 kB)\nCollecting pytz (from neo4j==6.4.0->-r tests/integration/requirements.txt (line 1))\n  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)\nDownloading neo4j-6.4.0-py3-none-any.whl (390 kB)\nDownloading pytz-2026.5-py2.py3-none-any.whl (506 kB)\nInstalling collected packages: pytz, neo4j\n\nSuccessfully installed neo4j-6.4.0 pytz-2026.5\n",
+  "stderr": " Container ingestion-neo4j-1 Recreate \n Container ingestion-neo4j-1 Recreated \n Container ingestion-neo4j-1 Starting \n Container ingestion-neo4j-1 Started \n Container ingestion-neo4j-1 Waiting \n Container ingestion-neo4j-1 Healthy \n Container ingestion-integration-tests-run-a25b508e599e Creating \n Container ingestion-integration-tests-run-a25b508e599e Created \nWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\ntest_replaying_same_artifacts_is_idempotent_for_nodes_and_edges (test_neo4j_store.Neo4jStoreIntegrationTests.test_replaying_same_artifacts_is_idempotent_for_nodes_and_edges) ... ok\ntest_replays_source_fixtures_with_explicit_typed_relationships (test_neo4j_store.Neo4jStoreIntegrationTests.test_replays_source_fixtures_with_explicit_typed_relationships) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 2.132s\n\nOK\n",
+  "failure": null,
+  "receipt": null,
+  "revision": {
+    "commit": null,
+    "dirty": null
+  },
+  "source_hash": "ede9f6590fd5cffbb354a1f99508a70e094f1e9fb9ba0346131e51115ab04714",
+  "before_hash": "ede9f6590fd5cffbb354a1f99508a70e094f1e9fb9ba0346131e51115ab04714",
+  "config_hash": "7e1372872b5fb26c26b65f4698255e37ffa908c2a8dce4b35e8ae1daaf248b9b",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "0929c8eb5ea58d5215a2d89acbfd3a65095f156d8c5e99c9490a1b3e1efc0afb"
+}

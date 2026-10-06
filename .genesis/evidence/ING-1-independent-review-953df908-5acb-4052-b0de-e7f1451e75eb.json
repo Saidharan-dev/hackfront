@@ -1,0 +1,13 @@
+{
+  "task": "ING-1",
+  "gate": "independent-review",
+  "kind": "review",
+  "attempt": "953df908-5acb-4052-b0de-e7f1451e75eb",
+  "human": "user",
+  "reason": "User reviewed and approved the canonical contracts and native-shaped fixtures.",
+  "observed_at": "2026-10-06T15:44:42.060Z",
+  "source_hash": "d03d160205ee4b5242b4907179a173f377d5e856e9ea86013c89742fe87eb176",
+  "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+  "reviewed_proofs": "08ae590e25d553381decbcdb7dd3b0e9f076e3c1ed69cc8a04f5d99517ffa4d9",
+  "hash": "287326bc6d7f4e73a2f2d195aa8428e30ec8de2fdd65a0ca681e8f704cc224f9"
+}

@@ -1,0 +1,39 @@
+digraph genesis {
+  rankdir=LR;
+  node [shape=box,fontname="system-ui"];
+  "file:ingestion/src/engineering_memory_ingestion/contracts/__init__.py" [label="ingestion/src/engineering_memory_ingestion/contracts/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/contracts/records.py" [label="ingestion/src/engineering_memory_ingestion/contracts/records.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/contracts/versions.py" [label="ingestion/src/engineering_memory_ingestion/contracts/versions.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/core/__init__.py" [label="ingestion/src/engineering_memory_ingestion/core/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/core/runner.py" [label="ingestion/src/engineering_memory_ingestion/core/runner.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/extraction/__init__.py" [label="ingestion/src/engineering_memory_ingestion/extraction/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/extraction/deterministic.py" [label="ingestion/src/engineering_memory_ingestion/extraction/deterministic.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/observability/__init__.py" [label="ingestion/src/engineering_memory_ingestion/observability/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/observability/run_summary.py" [label="ingestion/src/engineering_memory_ingestion/observability/run_summary.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/github/__init__.py" [label="ingestion/src/engineering_memory_ingestion/sources/github/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/github/adapter.py" [label="ingestion/src/engineering_memory_ingestion/sources/github/adapter.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/github/client.py" [label="ingestion/src/engineering_memory_ingestion/sources/github/client.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/github/mapper.py" [label="ingestion/src/engineering_memory_ingestion/sources/github/mapper.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py" [label="ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py" [label="ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/jira/client.py" [label="ingestion/src/engineering_memory_ingestion/sources/jira/client.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py" [label="ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py" [label="ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py" [label="ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/slack/client.py" [label="ingestion/src/engineering_memory_ingestion/sources/slack/client.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py" [label="ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py" [label="ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py" [label="ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py",class="file"];
+  "file:ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py" [label="ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py",class="file"];
+  "file:ingestion/tests/__init__.py" [label="ingestion/tests/__init__.py",class="file"];
+  "file:ingestion/tests/integration/test_neo4j_store.py" [label="ingestion/tests/integration/test_neo4j_store.py",class="file"];
+  "file:ingestion/tests/unit/__init__.py" [label="ingestion/tests/unit/__init__.py",class="file"];
+  "file:ingestion/tests/unit/test_contracts.py" [label="ingestion/tests/unit/test_contracts.py",class="file"];
+  "file:ingestion/tests/unit/test_deterministic_extraction.py" [label="ingestion/tests/unit/test_deterministic_extraction.py",class="file"];
+  "file:ingestion/tests/unit/test_github_adapter.py" [label="ingestion/tests/unit/test_github_adapter.py",class="file"];
+  "file:ingestion/tests/unit/test_jira_adapter.py" [label="ingestion/tests/unit/test_jira_adapter.py",class="file"];
+  "file:ingestion/tests/unit/test_native_fixtures.py" [label="ingestion/tests/unit/test_native_fixtures.py",class="file"];
+  "file:ingestion/tests/unit/test_pipeline.py" [label="ingestion/tests/unit/test_pipeline.py",class="file"];
+  "file:ingestion/tests/unit/test_slack_adapter.py" [label="ingestion/tests/unit/test_slack_adapter.py",class="file"];
+
+}

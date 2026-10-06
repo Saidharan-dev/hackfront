@@ -1,0 +1,30 @@
+{
+  "task": "ING-1",
+  "gate": "unit",
+  "kind": "command",
+  "attempt": "9e5c4b90-bfae-4dcf-8f62-c140b5902c3e",
+  "command": "python -m unittest discover -s ingestion/tests/unit",
+  "started_at": "2026-10-06T15:39:03.820Z",
+  "observed_at": "2026-10-06T15:39:04.285Z",
+  "exit_code": 1,
+  "signal": null,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\r\n  File \"<frozen runpy>\", line 88, in _run_code\r\n  File \"C:\\Python313\\Lib\\unittest\\__main__.py\", line 18, in <module>\r\n    main(module=None)\r\n    ~~~~^^^^^^^^^^^^^\r\n  File \"C:\\Python313\\Lib\\unittest\\main.py\", line 103, in __init__\r\n    self.parseArgs(argv)\r\n    ~~~~~~~~~~~~~~^^^^^^\r\n  File \"C:\\Python313\\Lib\\unittest\\main.py\", line 119, in parseArgs\r\n    self._do_discovery(argv[2:])\r\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\r\n  File \"C:\\Python313\\Lib\\unittest\\main.py\", line 242, in _do_discovery\r\n    self.createTests(from_discovery=True, Loader=Loader)\r\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Python313\\Lib\\unittest\\main.py\", line 149, in createTests\r\n    self.test = loader.discover(self.start, self.pattern, self.top)\r\n                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Python313\\Lib\\unittest\\loader.py\", line 308, in discover\r\n    raise ImportError('Start directory is not importable: %r' % start_dir)\r\nImportError: Start directory is not importable: 'ingestion/tests/unit'\r\n",
+  "failure": "command-failed",
+  "receipt": null,
+  "revision": {
+    "commit": null,
+    "dirty": null
+  },
+  "source_hash": "b2ce811a8ba8b0a5df8c74d2224d85e9663da29321e6627c2ab7522c070103bb",
+  "before_hash": "b2ce811a8ba8b0a5df8c74d2224d85e9663da29321e6627c2ab7522c070103bb",
+  "config_hash": "c39af6e26b08550a03c19e8f58cd984c324532e921975231d1f23656d87919ff",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "76176e1c7148ded3267c25127906c442e3b3ed411dca7c67ca82d55feb09affd"
+}
