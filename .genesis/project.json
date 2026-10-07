@@ -9,7 +9,7 @@
     "non_goals": [],
     "trust_boundary": "local repository",
     "created_at": "2026-10-06T14:42:56.641Z",
-    "updated_at": "2026-10-06T17:14:49.184Z"
+    "updated_at": "2026-10-07T16:57:16.454Z"
   },
   "policy": {
     "ponytail": "full",
@@ -23,11 +23,11 @@
     }
   },
   "lifecycle": {
-    "phase": "planning",
-    "status": "rejected",
+    "phase": "verify",
+    "status": "ready",
     "active_task": null,
     "blocker": null,
-    "next_action": "Finish defining requirement-linked tasks, then run genesis plan check."
+    "next_action": "Review completed work and choose the next bounded outcome."
   },
   "commands": {},
   "workflow": {
@@ -61,7 +61,12 @@
       "at": "2026-10-06T17:14:39.963Z",
       "source_hash": "e4ce868cf49f3da51d1a8b966715192f4142adc033c06d6af8c547bcdbc7d737"
     },
-    "plan_approval": null
+    "plan_approval": {
+      "human": "user",
+      "reason": "Approved the scoped ING-8 integration acceptance task",
+      "at": "2026-10-07T16:52:51.862Z",
+      "source_hash": "e4ce868cf49f3da51d1a8b966715192f4142adc033c06d6af8c547bcdbc7d737"
+    }
   },
   "artifacts": [
     {
@@ -774,7 +779,7 @@
     {
       "id": "ING-8",
       "outcome": "Add source-fixture to bounded-runner to Neo4j acceptance coverage for cursor replay and redacted run summaries.",
-      "state": "queued",
+      "state": "done",
       "risk": "medium",
       "owner": null,
       "scope": [
@@ -798,16 +803,28 @@
           "kind": "command",
           "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
           "mandatory": true,
-          "status": "pending",
-          "evidence": null
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-8-neo4j-e2e-692c49b8-90ac-4675-aeb6-82383bb533ac.json",
+            "hash": "2a71b30e42d71e459564b626e65f733452f08bdf0510dc6cb65ac2b904a7a47e",
+            "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+            "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+            "observed_at": "2026-10-07T16:54:32.579Z"
+          }
         },
         {
           "id": "independent-review",
           "kind": "review",
           "command": "",
           "mandatory": true,
-          "status": "pending",
-          "evidence": null
+          "status": "pass",
+          "evidence": {
+            "path": ".genesis/evidence/ING-8-independent-review-a7b79c5d-1caa-4200-b19b-69eb0cd591c5.json",
+            "hash": "ed4584b080a0d0f2866c29cc34d7aa1aa34c6bcbba83255db3c28f1b5d59d0f7",
+            "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+            "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+            "observed_at": "2026-10-07T16:56:32.051Z"
+          }
         }
       ],
       "next_action": "Run the task pre-flight.",
@@ -816,7 +833,65 @@
       "failures": [],
       "limitations": [],
       "created_at": "2026-10-06T17:14:38.990Z",
-      "updated_at": "2026-10-06T17:14:38.991Z"
+      "updated_at": "2026-10-07T16:56:33.765Z",
+      "base_manifest": {
+        "AGENTS.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "CLAUDE.md": "a67615d8ed1ed3dd1b0d2cbf874ceb8d4a285c3335cdfc2d785ec80a06daecc1",
+        "SPEC.md": "da96a227c24d178cc54a52dbd7591e3a3756759ac834c20e5c9d3451db90a3f2",
+        "artifacts/adr-001-source-neutral-evidence-model.html": "64b1232d604be61d1e71f2ff0c2c311097eb4acc49b35505161109191aacba14",
+        "artifacts/ingestion-architecture.html": "9524ac957b8cee8e383595e7a94382de4ecd29f574e84618cfaa10c26393b947",
+        "ingestion/docker-compose.yml": "c36952ae518cc2c638d30bd1f31b6be6a6056d5e93574c9806ee0839a52c74e8",
+        "ingestion/src/engineering_memory_ingestion/contracts/__init__.py": "904084e3f5a39632891b5f231d361a84148f97f876b6f8cb9115121728922a67",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/__init__.cpython-313.pyc": "da289c6a6dba7554802ce76a0ed031692a4e30c9b907fe1e42deaf3c0d676617",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/records.cpython-313.pyc": "5d440449ca193ebb8751a1ab7e9e56aad818791b0a7a56510a85fc8aa1419380",
+        "ingestion/src/engineering_memory_ingestion/contracts/__pycache__/versions.cpython-313.pyc": "a732c99f4ca867da7b6e5449c3f09447b7e0c700b115218c48cdd85412be9a16",
+        "ingestion/src/engineering_memory_ingestion/contracts/records.py": "52a329472834e09b4c2163ec50a959972ad5193867138d2bc949e00525b8a800",
+        "ingestion/src/engineering_memory_ingestion/contracts/versions.py": "820db5dd2c1a6321b269a95ead8825f9e9cdc986141f1a8e005544985869a03c",
+        "ingestion/src/engineering_memory_ingestion/core/__init__.py": "4779a6c4534de584a35b1a5465f3eb296081dc8bea534cebe7527f4d0ed3b4bb",
+        "ingestion/src/engineering_memory_ingestion/core/runner.py": "4d97ec4f00c74a7e6dd0b4d82901f6c6672c6a965bd3a2fde1b43b0eba0d5db7",
+        "ingestion/src/engineering_memory_ingestion/extraction/__init__.py": "bc3b9bfde2bc1d1ba709077690ce649720a51e321765d41d34fbee343dcc6e3d",
+        "ingestion/src/engineering_memory_ingestion/extraction/deterministic.py": "37e5f22512e966330a4a2a3134c0d9f60cb4f4d37b6a1f46df7aad8adf1ff255",
+        "ingestion/src/engineering_memory_ingestion/observability/__init__.py": "d5c661cb13a4735f15a04f0541ad3f351b5f71b4df823a84d7b18de1152b422a",
+        "ingestion/src/engineering_memory_ingestion/observability/run_summary.py": "5d08a5bb54683031af855dcd467670efc31e3cb502a3373af716c6188f887a8d",
+        "ingestion/src/engineering_memory_ingestion/sources/github/__init__.py": "a823353ee998b6992e96fce13b6752ae3b8d723bdf78e69b6c2d0341a67b5596",
+        "ingestion/src/engineering_memory_ingestion/sources/github/adapter.py": "e0cc04529dc6e95d030437b67297ccc170d58695ad1d7c6c41f34e74531284d3",
+        "ingestion/src/engineering_memory_ingestion/sources/github/client.py": "84e80812b5e2f7d93f7212eeca7d94da26ed64cca952d371762812b406b84cfa",
+        "ingestion/src/engineering_memory_ingestion/sources/github/mapper.py": "23f788b4262d284c9727c68543f20d0255ab9f51259aeb9599c35da9658f8fe1",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/__init__.py": "2ead7e079876217d74a104aad9e59e297b619fb1ce8a363319341b6c7b407175",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/adapter.py": "8cd932da045692b2efee45025ba685198d255f495727eba99c3deafa928ccfe9",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/client.py": "1f6ac0d0c0c30c48c61447fbe06d76de3e43e508490e8a26a3a8b050cab6f274",
+        "ingestion/src/engineering_memory_ingestion/sources/jira/mapper.py": "da9fb042ad366c83ccd1014057f1094726515097d8a1f43463aa474daf246e32",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/__init__.py": "6bea879154e25e37b95fe5e81054fcfa5655359ab73f00f50634444453c1ac96",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/adapter.py": "a2158fcab10b00961dbe0df6228b4d9850491c03ad72b749f20c4b22ec07c581",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/client.py": "d364da4f04e4fec6f93595add248dc3ea62c62db11aca953b8fb1d70f0802d25",
+        "ingestion/src/engineering_memory_ingestion/sources/slack/mapper.py": "c4afaf3baed5e676c16a253749dfae05199aba480852646e3d972e1163b90bb5",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/__init__.py": "8a46afaa0f67a9c0250d4e05ea0223dc5f3f978bc042141c4d4ffbbb205de296",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/schema.py": "52fa2faa0ed62b63dffb8bf00d079653fb2790ff6de66f22417bfdb067a05a3f",
+        "ingestion/src/engineering_memory_ingestion/storage/neo4j/writer.py": "07b9b4bb500a577d764c31e5b675bbc4c03c684fe7cb52e4a2fa0757c80dbd81",
+        "ingestion/tests/__init__.py": "8cb9a1f26a48d062564b20110071821bb7e6046eed8c331079ca13be98260e82",
+        "ingestion/tests/fixtures/sources/README.md": "04061aada56eaff85ae7e2a38b4079758c588cff48f76888984e08908d45373a",
+        "ingestion/tests/fixtures/sources/github/commit_detail.json": "eba5168319a10d4f82359026cb63e15e618e191d9bcbb0a61047c11cfeaaae96",
+        "ingestion/tests/fixtures/sources/github/pull_request.json": "d6fa6d3d12ed70eccd3b47309e56fa7bac21cc51b9093ee005edab6c6074f287",
+        "ingestion/tests/fixtures/sources/github/pull_request_commits.json": "1aff7166f4bfbdf797175c21c00c23d6bd5f3a98cd52ec1fafff35f0f8356d47",
+        "ingestion/tests/fixtures/sources/github/pull_request_issue_comments.json": "6caad5c35f192d6c75d8a81c1894f3c0bdf2b6d5dfe8e1ca4568b342571a5f3e",
+        "ingestion/tests/fixtures/sources/github/pull_request_review_comments.json": "d23c71583014382365f5181313204cabe2c6c8a8f68fd1b72cd84220667b13a7",
+        "ingestion/tests/fixtures/sources/github/pull_request_reviews.json": "7b8fc17924c9e5144cff5dbafde337038f03f090886d62c4941f20641074b23d",
+        "ingestion/tests/fixtures/sources/jira/issue.json": "3f9c6e607d59a2002c6053a72156e5673c9d9489372f4d878d67fc335653834b",
+        "ingestion/tests/fixtures/sources/jira/issue_comments.json": "3e85c805b413f78c18616d4dd8936d728b26099b9de15b3520f458c1ab2b7626",
+        "ingestion/tests/fixtures/sources/slack/conversations_replies.json": "4bf6711292cecb2ba529f81635b7657383e553341ce9600e338687b0b8522771",
+        "ingestion/tests/integration/requirements.txt": "222324da9d747b8643c5c77fb934b883d402f4f95d80178b003b8bea9028a36c",
+        "ingestion/tests/integration/test_neo4j_store.py": "f953a374b12c08d4a3846d168ea117f954a5ab49fbb3c803125226c3a757fade",
+        "ingestion/tests/unit/__init__.py": "c9bcdcdae2489fbca11b5769703062d09cbb928f574c256e12184daaa37fba00",
+        "ingestion/tests/unit/__pycache__/test_contracts.cpython-313.pyc": "47be63649839846337dc1b8a7098e8b166347ccdae970f44ad16d33bbfc00bfa",
+        "ingestion/tests/unit/__pycache__/test_native_fixtures.cpython-313.pyc": "aa1f3b998a80910be53e8610a17fb687d69f55342a8bb91e77c91cccf49478a8",
+        "ingestion/tests/unit/test_contracts.py": "7f3e3468ab23f7b6ef195f0e718e47f14f70c607cbfdd8de290abb746500c2a7",
+        "ingestion/tests/unit/test_deterministic_extraction.py": "3e32a161abc2bd7b53efa8f9883a7e2ad50cdd953c7eb169a247b986e5551c7a",
+        "ingestion/tests/unit/test_github_adapter.py": "ddddeff19a97ec06b7fb84bc2c1c1f62841626c5e3376f7a68be27fb7ea368de",
+        "ingestion/tests/unit/test_jira_adapter.py": "db1a1c27174bb8fbd40ecca88c401223563113ea1b2b8c5cfebdad3fb6b462ed",
+        "ingestion/tests/unit/test_native_fixtures.py": "19f3d1ab5d934b32c604750a940a22be426673249f00c08d1049e5a7f0ede90f",
+        "ingestion/tests/unit/test_pipeline.py": "577d89a798a0ab5a674fae6cc3b3cfae131cb9394914e91659f9dcb086fa479f",
+        "ingestion/tests/unit/test_slack_adapter.py": "589af1a5e0619c18466f6b8d1858ce29447c4e0599aedb39b4b1e65bf88cf53a"
+      }
     }
   ],
   "learning_proposals": [],
@@ -892,6 +967,15 @@
       "task": "ING-7",
       "human": null,
       "reason": null,
+      "revision": null
+    },
+    {
+      "id": "a7b79c5d-1caa-4200-b19b-69eb0cd591c5",
+      "at": "2026-10-07T16:56:32.051Z",
+      "action": "approve",
+      "task": "ING-8",
+      "human": "user",
+      "reason": "Approved by user in chat",
       "revision": null
     }
   ],
@@ -1303,6 +1387,54 @@
       "cost": null,
       "stop_reason": null,
       "ended_at": "2026-10-06T17:07:26.807Z"
+    },
+    {
+      "id": "e96373f7-f357-4b69-8648-e7175a1397e8",
+      "task": "ING-8",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 18184,
+      "child_pid": 20136,
+      "started_at": "2026-10-07T16:53:43.473Z",
+      "status": "failed",
+      "before_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+      "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": "command-failed",
+      "ended_at": "2026-10-07T16:53:45.264Z"
+    },
+    {
+      "id": "692c49b8-90ac-4675-aeb6-82383bb533ac",
+      "task": "ING-8",
+      "kind": "gate",
+      "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+      "timeout": 120000,
+      "authorization": null,
+      "pid": 19544,
+      "child_pid": 23252,
+      "started_at": "2026-10-07T16:54:12.172Z",
+      "status": "passed",
+      "before_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+      "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+      "environment": {
+        "node": "v22.14.0",
+        "platform": "win32",
+        "arch": "x64",
+        "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+        "variables": {}
+      },
+      "cost": null,
+      "stop_reason": null,
+      "ended_at": "2026-10-07T16:54:32.579Z"
     }
   ],
   "authorizations": [],
@@ -1324,14 +1456,14 @@
     }
   },
   "checkpoint": {
-    "at": "2026-10-06T17:14:49.104Z",
+    "at": "2026-10-07T16:57:16.348Z",
     "revision": {
-      "commit": null,
-      "dirty": null,
-      "source_hash": "b50803d4fb58deced4187824ea2fb5b4233eaeccecd2f0f7b4a9d9847fe8fdb8"
+      "commit": "096d7e797eeab26e608b56071faf2ea177ac61cf",
+      "dirty": true,
+      "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc"
     },
     "active_task": null,
-    "next_action": "Finish defining requirement-linked tasks, then run genesis plan check."
+    "next_action": "Review completed work and choose the next bounded outcome."
   },
   "legacy": null
 }

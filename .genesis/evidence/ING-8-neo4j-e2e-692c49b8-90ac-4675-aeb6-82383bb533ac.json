@@ -1,0 +1,30 @@
+{
+  "task": "ING-8",
+  "gate": "neo4j-e2e",
+  "kind": "command",
+  "attempt": "692c49b8-90ac-4675-aeb6-82383bb533ac",
+  "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+  "started_at": "2026-10-07T16:54:12.172Z",
+  "observed_at": "2026-10-07T16:54:32.579Z",
+  "exit_code": 0,
+  "signal": null,
+  "stdout": "Collecting neo4j==6.4.0 (from -r tests/integration/requirements.txt (line 1))\n  Downloading neo4j-6.4.0-py3-none-any.whl.metadata (5.5 kB)\nCollecting pytz (from neo4j==6.4.0->-r tests/integration/requirements.txt (line 1))\n  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)\nDownloading neo4j-6.4.0-py3-none-any.whl (390 kB)\nDownloading pytz-2026.5-py2.py3-none-any.whl (506 kB)\nInstalling collected packages: pytz, neo4j\n\nSuccessfully installed neo4j-6.4.0 pytz-2026.5\n",
+  "stderr": " Container ingestion-neo4j-1 Starting \n Container ingestion-neo4j-1 Started \n Container ingestion-neo4j-1 Waiting \n Container ingestion-neo4j-1 Healthy \n Container ingestion-integration-tests-run-b01cdbbe05ad Creating \n Container ingestion-integration-tests-run-b01cdbbe05ad Created \nWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\ntest_bounded_runner_replays_fixture_pages_into_neo4j_with_redacted_summary (test_neo4j_store.Neo4jStoreIntegrationTests.test_bounded_runner_replays_fixture_pages_into_neo4j_with_redacted_summary) ... ok\ntest_replaying_same_artifacts_is_idempotent_for_nodes_and_edges (test_neo4j_store.Neo4jStoreIntegrationTests.test_replaying_same_artifacts_is_idempotent_for_nodes_and_edges) ... ok\ntest_replays_source_fixtures_with_explicit_typed_relationships (test_neo4j_store.Neo4jStoreIntegrationTests.test_replays_source_fixtures_with_explicit_typed_relationships) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.294s\n\nOK\n",
+  "failure": null,
+  "receipt": null,
+  "revision": {
+    "commit": "096d7e797eeab26e608b56071faf2ea177ac61cf",
+    "dirty": true
+  },
+  "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+  "before_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+  "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "2a71b30e42d71e459564b626e65f733452f08bdf0510dc6cb65ac2b904a7a47e"
+}

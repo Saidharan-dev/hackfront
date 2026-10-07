@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import unittest
+from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -11,6 +12,7 @@ FIXTURES = ROOT / "tests" / "fixtures" / "sources"
 
 from neo4j import GraphDatabase  # noqa: E402
 from engineering_memory_ingestion.contracts import RecordKind  # noqa: E402
+from engineering_memory_ingestion.core import run_ingestion  # noqa: E402
 from engineering_memory_ingestion.sources.github.mapper import map_commit, map_pull_request  # noqa: E402
 from engineering_memory_ingestion.sources.jira.mapper import map_comment, map_issue  # noqa: E402
 from engineering_memory_ingestion.sources.slack.mapper import map_thread_message  # noqa: E402
@@ -37,6 +39,12 @@ def fixture_artifacts():
         ),
         *(map_thread_message(message, "T_EXAMPLE", "C_EXAMPLE", messages[0]["ts"]) for message in messages),
     )
+
+
+@dataclass(frozen=True)
+class FixturePage:
+    items: tuple
+    next_cursor: str | None
 
 
 class Neo4jStoreIntegrationTests(unittest.TestCase):
@@ -88,6 +96,79 @@ class Neo4jStoreIntegrationTests(unittest.TestCase):
             ).single()
         self.assertEqual(nodes, len(set(item.canonical_id for item in artifacts)) + 3)
         self.assertEqual(edge_ids["count"], edge_ids["ids"])
+
+    def test_bounded_runner_replays_fixture_pages_into_neo4j_with_redacted_summary(self):
+        artifacts = fixture_artifacts()
+        cursor_secret = "fixture-next-cursor-secret"
+
+        def fetch_page(cursor):
+            if cursor is None:
+                return FixturePage(artifacts[:3], cursor_secret)
+            if cursor == cursor_secret:
+                return FixturePage(artifacts[3:], None)
+            raise AssertionError("unexpected fixture cursor")
+
+        first = run_ingestion(
+            source="native-fixtures",
+            fetch_page=fetch_page,
+            writer=self.store,
+            max_pages=1,
+            adapter_version="fixture-mappers/1",
+        )
+        self.assertFalse(first.summary.complete)
+        self.assertEqual(first.resume_cursor, cursor_secret)
+        self.assertEqual(first.summary.fetched_count, 3)
+        self.assertEqual(first.summary.persisted_count, 3)
+        self.assertTrue(first.summary.has_resume_cursor)
+        self.assertEqual(len(first.summary.cursor_resume_sha256), 64)
+
+        # Replaying the same page must be an idempotent upsert in the real graph.
+        replay = run_ingestion(
+            source="native-fixtures", fetch_page=fetch_page, writer=self.store, max_pages=1
+        )
+        resumed = run_ingestion(
+            source="native-fixtures",
+            fetch_page=fetch_page,
+            writer=self.store,
+            cursor=first.resume_cursor,
+        )
+        self.assertEqual(replay.summary.persisted_count, 3)
+        self.assertTrue(resumed.summary.complete)
+        self.assertIsNotNone(resumed.summary.source_time_min)
+        self.assertIsNotNone(resumed.summary.source_time_max)
+
+        output = first.summary.to_json()
+        self.assertNotIn(cursor_secret, output)
+        if artifacts[0].text:
+            self.assertNotIn(artifacts[0].text, output)
+        with self.driver.session(database=self.store.database) as session:
+            counts = session.run(
+                "MATCH (a:Artifact) RETURN count(a) AS nodes, "
+                "count(CASE WHEN a.is_stub = false THEN 1 END) AS full_nodes"
+            ).single()
+            relationships = session.run(
+                "MATCH ()-[r]->() RETURN collect(DISTINCT type(r)) AS types, count(r) AS total"
+            ).single()
+        self.assertEqual(counts["nodes"], len({item.canonical_id for item in artifacts}) + 3)
+        self.assertEqual(counts["full_nodes"], len(artifacts))
+        self.assertTrue({"CONTAINS", "REFERENCES", "REPLIES_TO"}.issubset(set(relationships["types"])))
+        self.assertGreaterEqual(relationships["total"], 4)
+
+        def fail_with_sensitive_details(cursor):
+            raise RuntimeError(f"token=fixture-secret {cursor} source text={artifacts[0].text}")
+
+        failed = run_ingestion(
+            source="native-fixtures",
+            fetch_page=fail_with_sensitive_details,
+            writer=self.store,
+            cursor=cursor_secret,
+        )
+        failure_output = failed.summary.to_json()
+        self.assertEqual(failed.resume_cursor, cursor_secret)
+        self.assertEqual(failed.summary.errors[0].stage, "fetch_or_normalize")
+        self.assertNotIn(cursor_secret, failure_output)
+        self.assertNotIn("fixture-secret", failure_output)
+        self.assertNotIn(artifacts[0].text, failure_output)
 
 
 if __name__ == "__main__":

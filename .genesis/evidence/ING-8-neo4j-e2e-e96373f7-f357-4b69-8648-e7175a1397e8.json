@@ -1,0 +1,30 @@
+{
+  "task": "ING-8",
+  "gate": "neo4j-e2e",
+  "kind": "command",
+  "attempt": "e96373f7-f357-4b69-8648-e7175a1397e8",
+  "command": "docker compose -f ingestion/docker-compose.yml run --rm integration-tests",
+  "started_at": "2026-10-07T16:53:43.473Z",
+  "observed_at": "2026-10-07T16:53:45.264Z",
+  "exit_code": 1,
+  "signal": null,
+  "stdout": "",
+  "stderr": "unable to get image 'neo4j:2026.08-community': failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n",
+  "failure": "command-failed",
+  "receipt": null,
+  "revision": {
+    "commit": "096d7e797eeab26e608b56071faf2ea177ac61cf",
+    "dirty": true
+  },
+  "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+  "before_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+  "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "win32",
+    "arch": "x64",
+    "verifier": "cbdddbf25e5ed5f3406b93881ae54f64d11a8c54f0bfe177d19d9d9946a6a971",
+    "variables": {}
+  },
+  "hash": "873c3df7dd6a3bf987e6381ff4ce0f5a0fea21b478bb5e6130b6b17081bba263"
+}

@@ -1,0 +1,13 @@
+{
+  "task": "ING-8",
+  "gate": "independent-review",
+  "kind": "review",
+  "attempt": "a7b79c5d-1caa-4200-b19b-69eb0cd591c5",
+  "human": "user",
+  "reason": "Approved by user in chat",
+  "observed_at": "2026-10-07T16:56:32.051Z",
+  "source_hash": "d5691b51c36497b6f7f479538dac86fc7a919bf71a429904efceffd306ceaafc",
+  "config_hash": "a73f934e5f52c991d5614436c9926cc996d80d36fbd4cc2b70fc4a8670b97ece",
+  "reviewed_proofs": "cf8ec5d83aeac0b9e74e90632edaa53ba248532fb745a36b60b4b803ae9c3a25",
+  "hash": "ed4584b080a0d0f2866c29cc34d7aa1aa34c6bcbba83255db3c28f1b5d59d0f7"
+}
